@@ -1,6 +1,3 @@
-Here’s the complete and properly formatted code for your **README.md** file:
-
-```markdown
 # **Event Logging System**
 
 A scalable backend system for decentralized, tamper-proof event logging with a React-based frontend for log visualization. Built to handle distributed applications, this project demonstrates event logging, querying, and visualization capabilities.
@@ -40,6 +37,10 @@ A scalable backend system for decentralized, tamper-proof event logging with a R
 
 ## **Project Structure**
 
+
+
+
+
 ```
 project/
 ├── backend/
@@ -58,6 +59,7 @@ project/
 └── README.md                 # Documentation
 ```
 
+
 ---
 
 ## **Setup and Usage**
@@ -74,46 +76,62 @@ project/
    ```bash
    git clone <repository_url>
    cd project
-   ```
 
-2. **Navigate to the Backend Folder**:
-   ```bash
-   cd backend
-   ```
 
-3. **Start the Application with Docker Compose**:
-   Run this from the **backend** folder to start both backend and frontend:
-   ```bash
-   docker-compose up --build
-   ```
+Navigate to the Backend Folder:
 
-4. **Access the Application**:
-   - **Backend API**: `http://localhost:3000`
-   - **Frontend**: `http://localhost:3001`
+bash
+Copy code
+cd backend
+Start the Application with Docker Compose: Run this from the backend folder to start both backend and frontend:
 
----
+bash
+Copy code
+docker-compose up --build
+Access the Application:
 
-### API Endpoints
-
-#### **1. Log an Event**
-- **POST** `/api/logs`
-- **Request Body**:
-  ```json
-  {
+Backend API: http://localhost:3000
+Frontend: http://localhost:3001
+API Endpoints
+1. Log an Event
+POST /api/logs
+Request Body:
+json
+Copy code
+{
+  "event_type": "userLogin",
+  "timestamp": "2024-11-21T12:00:00Z",
+  "source_app_id": "app123",
+  "data_payload": {
+    "user": "johndoe",
+    "action": "login"
+  }
+}
+Response:
+json
+Copy code
+{
+  "message": "Log created successfully",
+  "log": {
+    "_id": "xyz123",
     "event_type": "userLogin",
     "timestamp": "2024-11-21T12:00:00Z",
     "source_app_id": "app123",
-    "data_payload": {
-      "user": "johndoe",
-      "action": "login"
-    }
+    "data_payload": { "user": "johndoe", "action": "login" },
+    "previous_hash": "abc456",
+    "hash": "hashvalue"
   }
-  ```
-- **Response**:
-  ```json
-  {
-    "message": "Log created successfully",
-    "log": {
+}
+2. Fetch Logs
+GET /api/logs
+Query Parameters:
+timestamp, event_type, source_app_id, page, limit
+Response:
+json
+Copy code
+{
+  "logs": [
+    {
       "_id": "xyz123",
       "event_type": "userLogin",
       "timestamp": "2024-11-21T12:00:00Z",
@@ -122,38 +140,7 @@ project/
       "previous_hash": "abc456",
       "hash": "hashvalue"
     }
-  }
-  ```
-
-#### **2. Fetch Logs**
-- **GET** `/api/logs`
-- **Query Parameters**:
-  - `timestamp`, `event_type`, `source_app_id`, `page`, `limit`
-- **Response**:
-  ```json
-  {
-    "logs": [
-      {
-        "_id": "xyz123",
-        "event_type": "userLogin",
-        "timestamp": "2024-11-21T12:00:00Z",
-        "source_app_id": "app123",
-        "data_payload": { "user": "johndoe", "action": "login" },
-        "previous_hash": "abc456",
-        "hash": "hashvalue"
-      }
-    ],
-    "page": 1,
-    "totalPages": 10
-  }
-  ```
-
----
-
-## **Frontend Features**
-
-1. Fetches logs from the backend.
-2. Displays logs in a table with options for filtering.
-3. Visualizes data trends using `chart.js`.
-
----
+  ],
+  "page": 1,
+  "totalPages": 10
+}
