@@ -1,0 +1,27 @@
+{
+    "name": "event-logging-system",
+    "version": "1.0.0",
+    "description": "A scalable backend system for decentralized event logging",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js"
+    },
+    "dependencies": {
+      "express": "^4.18.2",
+      "mongoose": "^7.3.4",
+      "body-parser": "^1.20.2",
+      "crypto-js": "^4.1.1",
+      "dotenv": "^16.3.1"
+    },
+    "devDependencies": {
+      "nodemon": "^3.0.1"
+    },
+    "keywords": [
+      "event-logging",
+      "backend",
+      "mongodb",
+      "tamper-proof"
+    ],
+    "author": "Rupam"
+  }
+  

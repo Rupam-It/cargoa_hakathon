@@ -1,0 +1,30 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: ./frontend  # Path to the frontend directory
+    ports:
+      - "3001:3001"  # Expose React app on port 3001
+    depends_on:
+      - backend  # Ensures frontend starts after backend
+    networks:
+      - mynetwork
+
+  backend:
+    build:
+      context: ./backend  # Path to the backend directory
+    ports:
+      - "3000:3000"  # Expose backend on port 3000
+    networks:
+      - mynetwork
+
+  mongodb:
+    image: mongo:6.0
+    ports:
+      - "27017:27017"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
