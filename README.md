@@ -35,31 +35,6 @@ A scalable backend system for decentralized, tamper-proof event logging with a R
 
 ---
 
-## **Project Structure**
-
-
-
-
-
-```
-project/
-├── backend/
-│   ├── app.js                # Backend server entry point
-│   ├── Dockerfile            # Dockerfile for backend
-│   ├── docker-compose.yml    # Docker Compose file
-│   ├── package.json          # Backend dependencies
-│   └── simulateLogs.js       # Script for simulating log events
-├── frontend/
-│   ├── src/
-│   │   ├── index.js          # React app entry point
-│   │   └── index.html        # React app template
-│   ├── Dockerfile            # Dockerfile for frontend
-│   ├── package.json          # Frontend dependencies
-│   └── webpack.config.js     # Webpack configuration for React
-└── README.md                 # Documentation
-```
-
-
 ---
 
 ## **Setup and Usage**
